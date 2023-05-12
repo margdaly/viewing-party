@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Movie Show' do
   before :each do
     @user = create(:user)
-    @movie = MovieFacade.new.get_movie(238)
+    @movie = MoviesFacade.new.get_movie(238)
 
     visit "/users/#{@user.id}/movies/#{@movie.id}"
   end 

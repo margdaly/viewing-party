@@ -1,0 +1,10 @@
+<%= form_with url: new_party_path(@user.id, @movie.id), method: :post do |f| %>
+  <%= f.hidden_field :movie_title, value: @movie.title %>
+  <%= f.hidden_field :host_id, value: @user.id %>
+  <%= f.hidden_field :movie_runtime, value: @movie.runtime %>
+  <%= f.hidden_field :poster_path, value: @movie.poster_path %>
+
+  <%= form.label :duration %>
+  <%= form.number_field :duration, value: @movie.runtime %>
+
+<%= end %>

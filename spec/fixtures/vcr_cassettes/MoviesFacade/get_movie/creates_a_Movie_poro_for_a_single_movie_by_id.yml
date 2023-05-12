@@ -44,15 +44,17 @@ http_interactions:
       - Accept-Encoding
       - Origin
       X-Cache:
-      - Miss from cloudfront
+      - Hit from cloudfront
       Via:
-      - 1.1 c10a25371a38d6a282811a6889cd8c6c.cloudfront.net (CloudFront)
+      - 1.1 08145b23e983b586cb4c0930b6b43c08.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DFW57-P2
       Alt-Svc:
       - h3=":443"; ma=86400
       X-Amz-Cf-Id:
-      - OIFSsNcyUQ7mLrpLFBDOocCogN70zW-qw-6ggXkjdu54qvzt3HclzA==
+      - yoJQrlz-8Ey9ytGPnlbtvI6nDOXP2JFcd_UBVaAfFJENbTn74ZhOjA==
+      Age:
+      - '5673'
     body:
       encoding: ASCII-8BIT
       string: '{"adult":false,"backdrop_path":"/ww1eIoywghjoMzRLRIcbJLuKnJH.jpg","belongs_to_collection":{"id":403374,"name":"Jack
@@ -66,5 +68,5 @@ http_interactions:
         Productions","origin_country":"US"},{"id":4,"logo_path":"/gz66EfNoYPqHTYI4q9UEN4CbHRc.png","name":"Paramount","origin_country":"US"}],"production_countries":[{"iso_3166_1":"CN","name":"China"},{"iso_3166_1":"US","name":"United
         States of America"}],"release_date":"2016-10-19","revenue":162146076,"runtime":118,"spoken_languages":[{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Released","tagline":"Justice
         is Coming.","title":"Jack Reacher: Never Go Back","video":false,"vote_average":5.93,"vote_count":4351}'
-  recorded_at: Fri, 12 May 2023 20:29:05 GMT
+  recorded_at: Fri, 12 May 2023 22:03:38 GMT
 recorded_with: VCR 6.1.0

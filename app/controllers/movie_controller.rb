@@ -5,11 +5,11 @@ class MovieController < ApplicationController
   end
 
   def results
-    @movies = MovieFacade.new.get_results(params[:q])
+    @movies = MoviesFacade.new.get_results(params[:q])
   end
 
   def show
-    @movie = MovieFacade.new.get_movie(params[:movie_id])
+    @movie = MoviesFacade.new.get_movie(params[:movie_id])
   end
 
   private
