@@ -1,49 +1,23 @@
-class MovieFacade 
-  def get_results(key_word)
-    if key_word == 'top%20rated'
-      top_rated_movies
-    else
-      search_by_title(key_word)
-    end 
+class MovieFacade
+  attr_reader :id, :movie
+
+  def initialize(id)
+    @id = id
   end
 
-  def get_cast(movie_id)
-    results = service.get_cast(movie_id)[:cast][0..9]
-
-    results.map do |result|
-      Actor.new(result)
-    end
+  def movie
+    TmdbService.new.get_movie(@id)
   end
 
-  def get_movie(movie_id)
-    results = service.get_movie(movie_id)
-    
-    Movie.new(results)
+  def poster_path
+    "https://image.tmdb.org/t/p/w154#{@movie.poster_path}"
   end
 
-  def get_movie_info
-    
+  def movie_reviews
+    TmdbService.new.get_reviews(@id)
   end
 
-  def search_by_title(key_word)
-    results = service.search_by_title(key_word)[:results]
-    
-    results.map do |result|
-      Movie.new(result)
-    end
-  end
-
-  def top_rated_movies
-    results = service.top_rated_movies[:results]
-
-    results.map do |result|
-      Movie.new(result)
-    end
-  end
-
-  private
-
-  def service
-    @_service ||= TmdbService.new
+  def movie_cast
+    TmdbService.new.get_cast(@id)
   end
 end
