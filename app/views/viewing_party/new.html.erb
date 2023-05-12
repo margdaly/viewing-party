@@ -1,4 +1,4 @@
-<%= form_with url: new_party_path(@user.id, @movie.id), method: :post do |f| %>
+<%= form_with url: new_viewing_party_path(@user.id, @movie.id), method: :post do |f| %>
   <%= f.hidden_field :movie_title, value: @movie.title %>
   <%= f.hidden_field :host_id, value: @user.id %>
   <%= f.hidden_field :movie_runtime, value: @movie.runtime %>
