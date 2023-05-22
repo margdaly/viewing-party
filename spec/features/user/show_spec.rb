@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'User Show Page' do
   before(:each) do
-    @user_1 = User.create!(id: 1, name: 'Jimmy', email: "jimmy@email.com")
-    @user_2 = User.create!(id: 2, name: 'Bobby', email: "bobby@email.com")
+    @user_1 = User.create!(id: 1, name: 'Jimmy', email: "jimmy@email.com", password: 'Jimothy')
+    @user_2 = User.create!(id: 2, name: 'Bobby', email: "bobby@email.com", password: 'doopeedoop')
 
     visit "/users/1"
   end
