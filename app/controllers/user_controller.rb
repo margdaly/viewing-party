@@ -18,8 +18,11 @@ class UserController < ApplicationController
       end
   end
 
+  def login_form
+    
+  end
   private
   def user_params
-    params.permit(:name, :email, :password)
+    params.permit(:name, :email, :password, :password_confirmation)
   end
 end
