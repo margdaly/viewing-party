@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "register user page" do
   describe 'register new user' do
     before :each do
-      old_user = User.create( name: 'Jimmy', email: 'oldmail@mail.com' )
+      @old_user = User.create( name: 'Jimmy', email: 'oldmail@mail.com' )
     end
     describe 'happy path' do
       it 'registers' do
@@ -37,6 +37,22 @@ RSpec.describe "register user page" do
         
         fill_in 'name', with: 'New User'
         fill_in 'email', with: 'oldmail@mail.com'
+        fill_in :password, with: 'test'
+        fill_in :password_confirmation, with: 'test'
+
+        click_button 'Register'
+
+        expect(page).to have_content("Registration Failed")
+        expect(current_path).to eq('/register')
+      end
+      it 'password no match' do
+        visit '/register'
+
+        fill_in 'name', with: 'New User'
+        fill_in 'email', with: 'oldmail@mail.com'
+        fill_in :password, with: 'test'
+        fill_in :password_confirmation, with: 'stuff that is not just test'
+
         click_button 'Register'
 
         expect(page).to have_content("Registration Failed")

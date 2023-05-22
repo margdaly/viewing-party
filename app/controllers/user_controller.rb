@@ -19,8 +19,20 @@ class UserController < ApplicationController
   end
 
   def login_form
-    
   end
+
+  def login
+    user = User.find_by(params[:user_id])
+    if user.authenticate(params[:password]) && user.email == params[:email]
+      session[:user_id] = user.id
+      flash[:success] = "Welcome, #{user.name}!"
+      redirect_to user_path(user)
+    else 
+      flash[:error] = "Login Failed"
+      render :login_form
+    end
+  end
+
   private
   def user_params
     params.permit(:name, :email, :password, :password_confirmation)
