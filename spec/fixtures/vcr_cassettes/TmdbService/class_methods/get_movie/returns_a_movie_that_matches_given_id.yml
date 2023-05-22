@@ -25,47 +25,45 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Fri, 12 May 2023 22:03:42 GMT
+      - Mon, 22 May 2023 18:03:05 GMT
       Server:
       - openresty
       Cache-Control:
-      - public, max-age=25830
+      - public, max-age=24700
       X-Memc:
       - HIT
       X-Memc-Key:
       - d379eb3e75bb3df235b90ef1dca23cd7
       X-Memc-Age:
-      - '5177'
+      - '14927'
       X-Memc-Expires:
-      - '20561'
+      - '7704'
       Etag:
-      - W/"1f19dc6c8b7b359f5e78fd2f00f513f7"
+      - W/"3f82e05ae63269dc933df4980fe4c5ed"
       Vary:
       - Accept-Encoding
       - Origin
       X-Cache:
-      - Hit from cloudfront
+      - Miss from cloudfront
       Via:
-      - 1.1 a0cae2fdb5ad25982d8870c08f7b43da.cloudfront.net (CloudFront)
+      - 1.1 89f2505f9f8dbcdacd6d4a40d558810c.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DFW57-P2
       Alt-Svc:
       - h3=":443"; ma=86400
       X-Amz-Cf-Id:
-      - pXJ-3LQWUnH259QPZn8du4PVLn-GUNQYgXK-PoASYzayS0x1Eazmjw==
-      Age:
-      - '4355'
+      - JeMljgDgxpZPYsDNnlcUZmN9KBm85cqXb2nbHPF9H2i0Ijryr9e0-g==
     body:
       encoding: ASCII-8BIT
       string: '{"adult":false,"backdrop_path":"/c1BaOxC8bo5ACFYkYYxL0bBWRaq.jpg","belongs_to_collection":null,"budget":4000000,"genres":[{"id":80,"name":"Crime"},{"id":35,"name":"Comedy"}],"homepage":"https://www.miramax.com/movie/four-rooms/","id":5,"imdb_id":"tt0113101","original_language":"en","original_title":"Four
         Rooms","overview":"It''s Ted the Bellhop''s first night on the job...and the
         hotel''s very unusual guests are about to place him in some outrageous predicaments.
         It seems that this evening''s room service is serving up one unbelievable
-        happening after another.","popularity":17.205,"poster_path":"/75aHn1NOYXh4M7L5shoeQ6NGykP.jpg","production_companies":[{"id":14,"logo_path":"/m6AHu84oZQxvq7n1rsvMNJIAsMu.png","name":"Miramax","origin_country":"US"},{"id":59,"logo_path":"/yH7OMeSxhfP0AVM6iT0rsF3F4ZC.png","name":"A
+        happening after another.","popularity":17.888,"poster_path":"/75aHn1NOYXh4M7L5shoeQ6NGykP.jpg","production_companies":[{"id":14,"logo_path":"/m6AHu84oZQxvq7n1rsvMNJIAsMu.png","name":"Miramax","origin_country":"US"},{"id":59,"logo_path":"/yH7OMeSxhfP0AVM6iT0rsF3F4ZC.png","name":"A
         Band Apart","origin_country":"US"}],"production_countries":[{"iso_3166_1":"US","name":"United
         States of America"}],"release_date":"1995-12-09","revenue":4257354,"runtime":98,"spoken_languages":[{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Released","tagline":"Twelve
         outrageous guests. Four scandalous requests. And one lone bellhop, in his
         first day on the job, who''s in for the wildest New year''s Eve of his life.","title":"Four
-        Rooms","video":false,"vote_average":5.758,"vote_count":2361}'
-  recorded_at: Fri, 12 May 2023 23:16:17 GMT
+        Rooms","video":false,"vote_average":5.763,"vote_count":2368}'
+  recorded_at: Mon, 22 May 2023 18:03:05 GMT
 recorded_with: VCR 6.1.0

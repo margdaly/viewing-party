@@ -25,48 +25,45 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Fri, 12 May 2023 20:29:05 GMT
+      - Mon, 22 May 2023 18:02:55 GMT
       Server:
       - openresty
       Cache-Control:
-      - public, max-age=27148
+      - public, max-age=25909
       X-Memc:
       - HIT
       X-Memc-Key:
       - 7209e7920a5695cd4e084e1843260285
       X-Memc-Age:
-      - '16629'
+      - '2378'
       X-Memc-Expires:
-      - '10001'
+      - '23501'
       Etag:
-      - W/"498ba4b2f710b539c4467e2077c23cab"
+      - W/"aafae20943d05283ee95594ef17ab4fc"
       Vary:
       - Accept-Encoding
       - Origin
       X-Cache:
-      - Hit from cloudfront
+      - Miss from cloudfront
       Via:
-      - 1.1 92ab95684f6d9316cfffdbce4bd65794.cloudfront.net (CloudFront)
+      - 1.1 88cdde34d65a7ba1d8a858856a27cd2a.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DFW57-P2
       Alt-Svc:
       - h3=":443"; ma=86400
       X-Amz-Cf-Id:
-      - TrlxMaFlYzAmvOzcIqqEcwhbgH4IMUDi5WxrJN0mIe46tVqimCd1sA==
-      Age:
-      - '10465'
+      - dKu-vtEOzet2KLQiWVWVflmMCGpY8BR0n76h3eR7FZ7cB-M1sQb_dQ==
     body:
       encoding: ASCII-8BIT
       string: '{"adult":false,"backdrop_path":"/ww1eIoywghjoMzRLRIcbJLuKnJH.jpg","belongs_to_collection":{"id":403374,"name":"Jack
         Reacher Collection","poster_path":"/qtafXiYDUMKxzsssU41qWey5oiT.jpg","backdrop_path":"/vViRXFnSyGJ2fzMbcc5sqTKswcd.jpg"},"budget":60000000,"genres":[{"id":28,"name":"Action"},{"id":53,"name":"Thriller"}],"homepage":"","id":343611,"imdb_id":"tt3393786","original_language":"en","original_title":"Jack
         Reacher: Never Go Back","overview":"When Major Susan Turner is arrested for
         treason, ex-investigator Jack Reacher undertakes the challenging task to prove
-        her innocence and ends up exposing a shocking conspiracy.","popularity":41.689,"poster_path":"/cOg3UT2NYWHZxp41vpxAnVCOC4M.jpg","production_companies":[{"id":82819,"logo_path":"/zlFa3VNua4hJyGEI4X2sqDrtEH9.png","name":"Skydance
-        Media","origin_country":"US"},{"id":83645,"logo_path":null,"name":"Huahua
+        her innocence and ends up exposing a shocking conspiracy.","popularity":47.877,"poster_path":"/cOg3UT2NYWHZxp41vpxAnVCOC4M.jpg","production_companies":[{"id":82819,"logo_path":"/gXfFl9pRPaoaq14jybEn1pHeldr.png","name":"Skydance","origin_country":"US"},{"id":83645,"logo_path":null,"name":"Huahua
         Media","origin_country":"CN"},{"id":3407,"logo_path":"/iVMjKOFyRvm9PW45lW1wW6TSvnj.png","name":"Shanghai
         Film Group","origin_country":"CN"},{"id":21777,"logo_path":null,"name":"TC
         Productions","origin_country":"US"},{"id":4,"logo_path":"/gz66EfNoYPqHTYI4q9UEN4CbHRc.png","name":"Paramount","origin_country":"US"}],"production_countries":[{"iso_3166_1":"CN","name":"China"},{"iso_3166_1":"US","name":"United
         States of America"}],"release_date":"2016-10-19","revenue":162146076,"runtime":118,"spoken_languages":[{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Released","tagline":"Justice
-        is Coming.","title":"Jack Reacher: Never Go Back","video":false,"vote_average":5.93,"vote_count":4351}'
-  recorded_at: Fri, 12 May 2023 23:23:30 GMT
+        is Coming.","title":"Jack Reacher: Never Go Back","video":false,"vote_average":5.931,"vote_count":4359}'
+  recorded_at: Mon, 22 May 2023 18:02:55 GMT
 recorded_with: VCR 6.1.0
