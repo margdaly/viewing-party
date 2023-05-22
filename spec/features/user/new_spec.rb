@@ -9,10 +9,11 @@ RSpec.describe "register user page" do
       it 'registers' do
         visit '/register'
   
-        fill_in 'name', with: 'New User'
-        fill_in 'email', with: 'newuser@mail.com'
+        fill_in :name, with: 'New User'
+        fill_in :email, with: 'newuser123@mail.com'
+        fill_in :password, with: 'test'
+
         click_button 'Register'
-  
         expect(page).to have_content("Welcome New User!")
         expect(current_path).to_not eq('/register')
       end
@@ -21,6 +22,7 @@ RSpec.describe "register user page" do
     describe 'sad path' do
       it 'form not filled out' do
         visit '/register'
+      
         fill_in 'name', with: 'New User'
 
         click_button 'Register'
