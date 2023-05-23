@@ -14,11 +14,13 @@
         <%= button_to "Create New User", "/register", method: :get %>
       </div>
       <br>
-      <% @users.each do |user| %>
-        <div id="user-<%= user.id %>">
-          <%= link_to "#{user.email}", "/users/#{user.id}" %>
-        </div>
-      <br>
+      <% if current_user %>
+        <% @users.each do |user| %>
+          <div id="user-<%= user.id %>">
+            <%= "#{user.email}" %>
+          </div>
+        <br>
+        <% end %>
       <% end %>
   </section>
 </body>

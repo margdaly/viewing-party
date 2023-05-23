@@ -25,43 +25,17 @@ RSpec.describe 'Landing Page' do
     expect(current_path).to eq("/register")
   end
 
+  scenario 'Login link' do
+    visit root_path
+    within "#login" do
+      expect(page).to have_link("Login")
+      click_link("Login")
+    end
+    expect(current_path).to eq(login_form_path)
+  end
+
   describe "list of existing users" do
-    it "displays all existing users' emails as links to their dashboard" do
-      @user_1 = create(:user)
-      @user_2 = create(:user)
-      @user_3 = create(:user)
-      visit root_path
-
-      within "#user-#{@user_1.id}" do
-        expect(page).to have_link("#{@user_1.email}")
-        click_on "#{@user_1.email}"
-        expect(current_path).to eq("/users/#{@user_1.id}")
-      end
-
-      visit root_path
-      within "#user-#{@user_2.id}" do
-        expect(page).to have_link("#{@user_2.email}")
-        click_on "#{@user_2.email}"
-        expect(current_path).to eq("/users/#{@user_2.id}")
-      end
-
-      visit root_path
-      within "#user-#{@user_3.id}" do
-        expect(page).to have_link("#{@user_3.email}")
-        click_on "#{@user_3.email}"
-        expect(current_path).to eq("/users/#{@user_3.id}")
-      end
-    end
-    scenario 'Login link' do
-      visit root_path
-      within "#login" do
-        expect(page).to have_link("Login")
-        click_link("Login")
-      end
-      expect(current_path).to eq(login_form_path)
-    end
-
-    scenario 'Logout link' do
+    before :each do
       new_user = User.create(name: 'Newer User', email: 'neweruser321@email.com', password: 'test' )
 
       visit login_form_path
@@ -70,7 +44,29 @@ RSpec.describe 'Landing Page' do
       fill_in :password, with: 'test'
   
       click_button 'Login'
+    end
+    it "displays all existing users' emails" do
+      @user_1 = create(:user)
+      @user_2 = create(:user)
+      @user_3 = create(:user)
+      visit root_path
 
+      within "#user-#{@user_1.id}" do
+        expect(page).to have_content("#{@user_1.email}")
+      end
+
+      visit root_path
+      within "#user-#{@user_2.id}" do
+        expect(page).to have_content("#{@user_2.email}")
+      end
+
+      visit root_path
+      within "#user-#{@user_3.id}" do
+        expect(page).to have_content("#{@user_3.email}")
+      end
+    end
+
+    scenario 'Logout link' do
       visit root_path
       expect(page).to have_link("Logout")
       click_link("Logout")
