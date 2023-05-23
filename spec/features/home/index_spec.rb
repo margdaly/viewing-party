@@ -11,18 +11,22 @@ RSpec.describe 'Landing Page' do
     end
   end
 
-  scenario 'has link to return to home page' do
-    within 'nav' do
-      expect(page).to have_link('Home', href: root_path)
+  describe 'links/buttons' do
+    scenario 'has link to return to home page' do
+      within 'nav' do
+        expect(page).to have_link('Home', href: root_path)
+      end
     end
-  end
 
-  scenario 'has button to create new user' do
-    within '#create_user' do
-      expect(page).to have_button('Create New User')
-      click_button 'Create New User'
+    scenario 'has button to create new user' do
+      within '#create_user' do
+        expect(page).to have_button('Create New User')
+        click_button 'Create New User'
+      end
+      expect(current_path).to eq('/register')
     end
-    expect(current_path).to eq('/register')
+
+    
   end
 
   describe 'list of existing users' do
