@@ -52,5 +52,29 @@ RSpec.describe 'Landing Page' do
         expect(current_path).to eq("/users/#{@user_3.id}")
       end
     end
+    scenario 'Login link' do
+      visit root_path
+      within "#login" do
+        expect(page).to have_link("Login")
+        click_link("Login")
+      end
+      expect(current_path).to eq(login_form_path)
+    end
+
+    scenario 'Logout link' do
+      new_user = User.create(name: 'Newer User', email: 'neweruser321@email.com', password: 'test' )
+
+      visit login_form_path
+  
+      fill_in :email, with: 'neweruser321@email.com'
+      fill_in :password, with: 'test'
+  
+      click_button 'Login'
+
+      visit root_path
+      expect(page).to have_link("Logout")
+      click_link("Logout")
+      expect(current_path).to eq(root_path)
+    end
   end
 end
