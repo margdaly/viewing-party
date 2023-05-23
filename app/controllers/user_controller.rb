@@ -6,7 +6,7 @@ class UserController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
-  
+
   def create
     user = User.create(user_params)
     if user.save
@@ -24,6 +24,7 @@ class UserController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
+      flash[:success] = "Welcome, #{user.name}!"
       redirect_to user_path(user)
     else
       flash[:error] = 'Sorry, your credentials are incorrect.'

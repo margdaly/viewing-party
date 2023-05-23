@@ -16,6 +16,7 @@ RSpec.describe 'Logging In' do
     click_on 'Log In'
 
     expect(current_path).to eq("/users/#{user.id}")
+    expect(page).to have_content("Welcome, Tammy!")
   end
 
   scenario 'sad path, incorrect credentials' do
