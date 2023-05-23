@@ -1,7 +1,13 @@
-<%= form_with url: new_user_path, method: :post, local: true do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
-  <%= f.label :email %>
-  <%= f.text_field :email %><br>
-  <%= f.submit 'Register' %>
+<h2>Create a New User</h2>
+
+<%= form_with url: '/register', local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, required: true %><br>
+  <%= form.label :email %>
+  <%= form.text_field :email, required: true %><br>
+  <%= form.label :password %>
+  <%= form.password_field :password, required: true %><br>
+  <%= form.label :password_confirmation %>
+  <%= form.password_field :password_confirmation, required: true %><br>
+  <%= form.submit "Create New User" %>
 <% end %>

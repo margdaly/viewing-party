@@ -1,44 +1,62 @@
 require 'rails_helper'
 
-RSpec.describe "register user page" do
-  describe 'register new user' do
-    before :each do
-      old_user = User.create( name: 'Jimmy', email: 'oldmail@mail.com' )
-    end
-    describe 'happy path' do
-      it 'registers' do
-        visit '/register'
-  
-        fill_in 'name', with: 'New User'
-        fill_in 'email', with: 'newuser@mail.com'
-        click_button 'Register'
-  
-        expect(page).to have_content("Welcome New User!")
-        expect(current_path).to_not eq('/register')
-      end
+RSpec.describe 'User Registration' do
+  describe 'creates new user' do
+    scenario 'happy path' do
+      visit register_path
+
+      fill_in 'Name', with: 'User One'
+      fill_in 'Email', with: 'user1@example.com'
+      fill_in 'Password', with: '123password'
+      fill_in 'Password confirmation', with: '123password'
+
+      click_button 'Create New User'
+
+      expect(current_path).to eq(user_path(User.last.id))
+      expect(page).to have_content("User One's Dashboard")
     end
 
-    describe 'sad path' do
-      it 'form not filled out' do
-        visit '/register'
-        fill_in 'name', with: 'New User'
+    scenario 'sad path, email isnt unique' do
+      User.create(name: 'User One', email: 'notunique@example.com', password: '123password', password_confirmation: '123password')
 
-        click_button 'Register'
+      visit register_path
 
-        expect(page).to have_content("Registration Failed")
-        expect(current_path).to eq('/register')
-      end
+      fill_in 'Name', with: 'User Two'
+      fill_in 'Email', with: 'notunique@example.com'
+      fill_in 'Password', with: '123password'
+      fill_in 'Password confirmation', with: '123password'
+      click_button 'Create New User'
 
-      it 'email already in use' do
-        visit '/register'
-        
-        fill_in 'name', with: 'New User'
-        fill_in 'email', with: 'oldmail@mail.com'
-        click_button 'Register'
+      expect(current_path).to eq(register_path)
+      expect(page).to have_content('Email has already been taken')
+    end
 
-        expect(page).to have_content("Registration Failed")
-        expect(current_path).to eq('/register')
-      end
+    scenario 'sad path, passwords dont match' do
+      visit register_path
+
+      fill_in 'Name', with: 'User'
+      fill_in 'Email', with: 'unique@example.com'
+      fill_in 'Password', with: 'password'
+      fill_in 'Password confirmation', with: '123password'
+
+      click_button 'Create New User'
+
+      expect(current_path).to eq(register_path)
+      expect(page).to have_content("Password confirmation doesn't match")
+    end
+
+    scenario 'sad path, no name' do
+      visit register_path
+
+      fill_in 'Name', with: ''
+      fill_in 'Email', with: 'unique@example.com'
+      fill_in 'Password', with: '123password'
+      fill_in 'Password confirmation', with: '123password'
+
+      click_button 'Create New User'
+
+      expect(current_path).to eq(register_path)
+      expect(page).to have_content("Name can't be blank")
     end
   end
 end
