@@ -34,6 +34,10 @@ class UserController < ApplicationController
     end
   end
 
+  def logout
+    session[:user_id] = nil 
+  end
+
   private
   def user_params
     params.permit(:name, :email, :password, :password_confirmation)
