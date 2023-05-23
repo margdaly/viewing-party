@@ -75,6 +75,7 @@ RSpec.describe 'Landing Page' do
       expect(page).to have_link("Logout")
       click_link("Logout")
       expect(current_path).to eq(root_path)
+      expect(page).to have_link("Login")
     end
   end
 end
