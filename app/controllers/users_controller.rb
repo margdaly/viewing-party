@@ -1,37 +1,27 @@
 class UsersController < ApplicationController
+  # skip_before_action :authenticate_user, only: [:new, :create]
+  # before_action :redirect_if_authenticated, only: [:new, :create]
+  
   def new
     @user = User.new
-  end
-
-  def show
-    @user = User.find(params[:id])
   end
 
   def create
     user = User.create(user_params)
     if user.save
-      redirect_to user_path(user)
+      session[:user_id] = user.id
+      redirect_to dashboard_path
     else
       flash[:error] = user.errors.full_messages.to_sentence
       redirect_to register_path
     end
   end
 
-  def login_form 
+  def show
+    @user = User.find(session[:user_id])
+    # require 'pry'; binding.pry
   end
-
-  def login_user
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      flash[:success] = "Welcome, #{user.name}!"
-      redirect_to user_path(user)
-    else
-      flash[:error] = 'Sorry, your credentials are incorrect.'
-      render :login_form
-    end
-  end
-
+  
   private
 
   def user_params

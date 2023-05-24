@@ -1,14 +1,17 @@
 <body>
   <section id="users">
-      <div id="create_user">
-        <%= button_to "Create New User", register_path, method: :get %>
-        <%= link_to "I already have an account", login_path %>
-      </div>
+    <% if current_user %>
+      <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+    <% else %>
+      <li><%= button_to "Create New User", register_path, method: :get %></li>
+      <br>
+      <li><%= link_to "I already have an account", login_path %></li>
+    <% end %>
       <br>
     <h3>Existing Users</h3><br>
       <% @users.each do |user| %>
         <div id="user-<%= user.id %>">
-          <%= link_to user.email, user_path(user.id) %>
+          <%= link_to user.email, dashboard_path %>
         </div>
       <br>
       <% end %>

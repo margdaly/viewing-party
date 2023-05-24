@@ -2,6 +2,10 @@
   <div class="navbar-header">
     <ul>
       <li><%= link_to "Home", root_path, class: "navbar-brand" %></li>
+      <br>
+      <% if current_user %>
+        <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+      <% end %>
     </ul>
   </div>
 </nav>

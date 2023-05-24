@@ -6,14 +6,19 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-
-  
   #user paths
+
   get '/register', to: 'users#new', as: 'register'
   post '/register', to: 'users#create'
-  get '/users/:id', to: 'users#show', as: 'user'
-  get '/login', to: 'users#login_form'
-  post '/login', to: 'users#login_user'
+  get '/dashboard', to: 'users#show'
+
+  # namespace :users do
+  #   resources :sessions, only: [:new, :create, :destroy]
+  # end
+  get '/login', to: 'users/sessions#new', as: 'login'
+  post '/login', to: 'users/sessions#create'
+  delete '/logout', to: 'users/sessions#destroy', as: 'logout'
+
   get '/users/:user_id/discover', to: 'movie#index', as: 'movie_index'
   get '/users/:user_id/movies', to: 'movie#results', as: 'movie_results'
   get '/users/:user_id/movies/:movie_id', to: 'movie#show', as: 'movie'

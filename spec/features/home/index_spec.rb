@@ -11,22 +11,28 @@ RSpec.describe 'Landing Page' do
     end
   end
 
-  describe 'links/buttons' do
     scenario 'has link to return to home page' do
       within 'nav' do
         expect(page).to have_link('Home', href: root_path)
       end
     end
 
-    scenario 'has button to create new user' do
-      within '#create_user' do
-        expect(page).to have_button('Create New User')
-        click_button 'Create New User'
-      end
+  describe 'links/buttons if not logged in' do
+    scenario 'brand new user' do
+      expect(page).to have_button('Create New User')
+
+      click_button 'Create New User'
+
       expect(current_path).to eq('/register')
     end
 
-    
+    scenario 'user already has an account' do
+      expect(page).to have_link('I already have an account')
+
+      click_on 'I already have an account'
+
+      expect(current_path).to eq('/login')
+    end
   end
 
   describe 'list of existing users' do
@@ -37,23 +43,17 @@ RSpec.describe 'Landing Page' do
       visit root_path
 
       within "#user-#{@user1.id}" do
-        expect(page).to have_link(@user1.email)
-        click_on @user1.email
-        expect(current_path).to eq("/users/#{@user1.id}")
+        expect(page).to have_content(@user1.email)
       end
 
       visit root_path
       within "#user-#{@user2.id}" do
-        expect(page).to have_link(@user2.email)
-        click_on @user2.email
-        expect(current_path).to eq("/users/#{@user2.id}")
+        expect(page).to have_content(@user2.email)
       end
 
       visit root_path
       within "#user-#{@user3.id}" do
-        expect(page).to have_link(@user3.email)
-        click_on @user3.email
-        expect(current_path).to eq("/users/#{@user3.id}")
+        expect(page).to have_content(@user3.email)
       end
     end
   end

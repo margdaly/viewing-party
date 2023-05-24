@@ -10,9 +10,9 @@ RSpec.describe 'User Registration' do
       fill_in 'Password', with: '123password'
       fill_in 'Password confirmation', with: '123password'
 
-      click_button 'Create New User'
+      click_on 'Create New User'
 
-      expect(current_path).to eq(user_path(User.last.id))
+      expect(current_path).to eq(dashboard_path)
       expect(page).to have_content("User One's Dashboard")
     end
 
@@ -25,7 +25,7 @@ RSpec.describe 'User Registration' do
       fill_in 'Email', with: 'notunique@example.com'
       fill_in 'Password', with: '123password'
       fill_in 'Password confirmation', with: '123password'
-      click_button 'Create New User'
+      click_on 'Create New User'
 
       expect(current_path).to eq(register_path)
       expect(page).to have_content('Email has already been taken')
@@ -39,7 +39,7 @@ RSpec.describe 'User Registration' do
       fill_in 'Password', with: 'password'
       fill_in 'Password confirmation', with: '123password'
 
-      click_button 'Create New User'
+      click_on 'Create New User'
 
       expect(current_path).to eq(register_path)
       expect(page).to have_content("Password confirmation doesn't match")
@@ -53,7 +53,7 @@ RSpec.describe 'User Registration' do
       fill_in 'Password', with: '123password'
       fill_in 'Password confirmation', with: '123password'
 
-      click_button 'Create New User'
+      click_on 'Create New User'
 
       expect(current_path).to eq(register_path)
       expect(page).to have_content("Name can't be blank")

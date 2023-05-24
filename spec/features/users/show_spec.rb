@@ -4,8 +4,11 @@ RSpec.describe 'User Show Page' do
   before(:each) do
     @user1 = User.create!(id: 1, name: 'Jimmy', email: 'jimmy@email.com', password: 'test', password_confirmation: 'test')
     @user2 = User.create!(id: 2, name: 'Bobby', email: 'bobby@email.com', password: 'test', password_confirmation: 'test')
-
-    visit "/users/#{@user1.id}"
+    visit login_path
+    fill_in :email, with: @user1.email
+    fill_in :password, with: @user1.password
+    click_on 'Log In'
+    # visit dashboard_path
   end
 
   it "displays the user's name" do
@@ -17,19 +20,9 @@ RSpec.describe 'User Show Page' do
     expect(page).to have_button('Discover Movies')
     click_button 'Discover Movies'
     expect(current_path).to eq("/users/#{@user1.id}/discover")
-
-    visit "/users/#{@user2.id}"
-    expect(page).to have_button('Discover Movies')
-    click_button 'Discover Movies'
-    expect(current_path).to eq("/users/#{@user2.id}/discover")
   end
 
   it 'has section that lists viewing parties' do
-    within 'section#viewing_parties' do
-      expect(page).to have_content('Viewing Parties')
-    end
-
-    visit "/users/#{@user2.id}"
     within 'section#viewing_parties' do
       expect(page).to have_content('Viewing Parties')
     end
