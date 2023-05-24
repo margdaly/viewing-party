@@ -3,6 +3,10 @@ before_action :require_admin
   def dashboard
     @users = User.all.where(role: 0)
   end
+
+  def user_show
+    @user = User.find(params[:id])
+  end
   
   private
     def require_admin

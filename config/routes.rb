@@ -26,4 +26,5 @@ Rails.application.routes.draw do
 
   #admin paths
   get '/admin/dashboard', to: 'admin#dashboard', as: 'admin_dashboard'
+  get '/admin/users/:id', to: 'admin#user_show', as: 'admin_user_show'
 end
