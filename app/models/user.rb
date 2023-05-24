@@ -9,4 +9,8 @@ class User < ApplicationRecord
   has_secure_password
   
   enum role: %w(default admin)
+
+  def current_admin?
+    role == "admin"
+  end
 end

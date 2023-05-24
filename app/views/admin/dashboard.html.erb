@@ -1,0 +1,6 @@
+<% @users.each do |user| %>
+<div id="users-<%= user.id %>">
+  <%= user.name %> <br>
+  <%= link_to "#{user.email}" %><br>
+</div>
+<% end %>

@@ -23,4 +23,7 @@ Rails.application.routes.draw do
   
   #viewing party paths
   get '/viewing_party/new', to: 'viewing_party#new', as: 'new_viewing_party'
+
+  #admin paths
+  get '/admin/dashboard', to: 'admin#dashboard', as: 'admin_dashboard'
 end
