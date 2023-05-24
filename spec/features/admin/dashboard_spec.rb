@@ -41,15 +41,15 @@ RSpec.describe "admin dashboard" do
         expect(page).to have_content(@user_5.email)
       end
     end
-    xit 'clicks on a user and is taken to their dashboard' do
-      click_on @user_1.name
+    it 'clicks on a user and is taken to their dashboard' do
+      click_on @user_1.email
 
-      expect(current_path).to eq(admin_user_path(@user_1))
+      expect(current_path).to eq(admin_user_show_path(@user_1))
     end
   end
 
   describe 'sad path' do
-    xit 'cannot be accessed by default user' do
+  it 'cannot be accessed by default user' do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

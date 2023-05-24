@@ -10,7 +10,7 @@ before_action :require_admin
   
   private
     def require_admin
-      render file: "/public/404" unless current_admin?
+      render file: Rails.root.join('public', '404.html') unless current_admin?
     end
 
     def current_admin?

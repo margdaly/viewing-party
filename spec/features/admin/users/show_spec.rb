@@ -38,7 +38,7 @@ RSpec.describe "admin dashboard" do
   end
 
   describe 'sad path' do
-    xit 'cannot be accessed by default user' do
+    it 'cannot be accessed by default user' do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
