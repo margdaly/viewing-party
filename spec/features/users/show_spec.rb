@@ -27,4 +27,15 @@ RSpec.describe 'User Show Page' do
       expect(page).to have_content('Viewing Parties')
     end
   end
+
+  describe 'visting dashboard as a visitor' do
+    it 'redirects to landing page' do
+      click_on 'Log Out'
+      expect(current_path).to eq(root_path)
+      visit dashboard_path
+
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content('must be logged in or registered')
+    end
+  end
 end

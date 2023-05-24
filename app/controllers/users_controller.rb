@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  # skip_before_action :authenticate_user, only: [:new, :create]
-  # before_action :redirect_if_authenticated, only: [:new, :create]
+  before_action :require_user, only: [:show]
   
   def new
     @user = User.new
@@ -20,10 +19,17 @@ class UsersController < ApplicationController
   def show
     @user = User.find(session[:user_id])
   end
-  
+
   private
 
   def user_params
     params.permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def require_user
+    if !session[:user_id]
+      flash[:error] = 'You must be logged in or registered to view this page'
+      redirect_to root_path
+    end
   end
 end
