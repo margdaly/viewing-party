@@ -16,7 +16,7 @@ RSpec.describe 'User Show Page' do
     it 'has a button to Discover Movies, which redirectes to the discover page' do
       expect(page).to have_button('Discover Movies')
       click_button 'Discover Movies'
-      expect(current_path).to eq("/users/#{@user_1.id}/discover")
+      expect(current_path).to eq("/discover")
   
       visit '/dashboard'
     end
