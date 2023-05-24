@@ -36,25 +36,27 @@ RSpec.describe 'Landing Page' do
   end
 
   describe 'list of existing users' do
-    it "displays all existing users' emails as links to their dashboard" do
+    before :each do
       @user1 = create(:user)
       @user2 = create(:user)
-      @user3 = create(:user)
+      visit root_path
+    end
+
+    it 'a visitor cannot see a list of existing users' do
+      expect(page).to_not have_content(@user1.email)
+      expect(page).to_not have_content(@user2.email)
+    end
+
+    it 'a registered user can see a list of existing users' do
+      @user3 = User.create!(name: 'Bob', email: 'b@email.com', password: '123', password_confirmation: '123')
+      visit login_path
+      fill_in :email, with: @user3.email
+      fill_in :password, with: @user3.password
+      click_button 'Log In'
       visit root_path
 
-      within "#user-#{@user1.id}" do
-        expect(page).to have_content(@user1.email)
-      end
-
-      visit root_path
-      within "#user-#{@user2.id}" do
-        expect(page).to have_content(@user2.email)
-      end
-
-      visit root_path
-      within "#user-#{@user3.id}" do
-        expect(page).to have_content(@user3.email)
-      end
+      expect(page).to have_content(@user1.email)
+      expect(page).to have_content(@user2.email)
     end
   end
 end

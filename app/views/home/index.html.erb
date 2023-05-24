@@ -1,6 +1,6 @@
 <body>
   <section id="users">
-    <% if current_user %>
+    <% if session[:user_id] %>
       <li><%= link_to "Log Out", logout_path, method: :delete %></li>
     <% else %>
       <li><%= button_to "Create New User", register_path, method: :get %></li>
@@ -8,12 +8,14 @@
       <li><%= link_to "I already have an account", login_path %></li>
     <% end %>
       <br>
+    <% if session[:user_id] %>
     <h3>Existing Users</h3><br>
       <% @users.each do |user| %>
         <div id="user-<%= user.id %>">
-          <%= link_to user.email, dashboard_path %>
+          <%= user.email %>
         </div>
       <br>
       <% end %>
+    <% end %>
   </section>
 </body>
