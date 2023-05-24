@@ -4,8 +4,8 @@ RSpec.describe 'User Show Page' do
   before(:each) do
     @user_1 = User.create!(id: 1, name: 'Jimmy', email: "jimmy@email.com", password: 'Jimothy')
     @user_2 = User.create!(id: 2, name: 'Bobby', email: "bobby@email.com", password: 'doopeedoop')
-
-    visit "/users/1"
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_1)
+    visit "/dashboard"
   end
 
   it "displays the user's name" do
