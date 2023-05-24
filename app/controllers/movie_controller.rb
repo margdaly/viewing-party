@@ -16,6 +16,10 @@ class MovieController < ApplicationController
   private
 
   def find_user
-    @user = User.find(params[:user_id])
+    @user = current_user
+      if current_user.nil?
+        redirect_to root_path
+        flash[:error] = "You must be logged in to view this page"
+      end
   end
 end

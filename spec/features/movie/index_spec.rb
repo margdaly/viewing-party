@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Movie Index" do
   before :each do
     @user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     visit movie_index_path(@user)
   end
 

@@ -5,8 +5,9 @@ RSpec.describe 'Movie Show', :vcr do
     @user = create(:user)
     @movie = MoviesFacade.new.get_movie(238)
     @cast = CastFacade.new.get_cast(238)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
-    visit "/users/#{@user.id}/movies/#{@movie.id}"
+    visit "/movies/#{@movie.id}"
   end 
   
   describe "button section" do
@@ -14,7 +15,7 @@ RSpec.describe 'Movie Show', :vcr do
       expect(page).to have_button("Create Viewing Party For The Godfather")
 
       click_on("Create Viewing Party For The Godfather")
-      expect(current_path).to eq(new_viewing_party_path(@user, @movie))
+      expect(current_path).to eq(new_viewing_party_path(@user.id, @movie))
     end
 
     it "has a button to return to discover page" do

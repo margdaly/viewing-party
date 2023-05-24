@@ -5,18 +5,19 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   root "home#index"
-
+  
+  get '/movies/:movie_id', to: 'movie#show', as: 'movie'
 
   
   #user paths
   get '/register', to: 'user#new', as: 'new_user'
   post '/register', to: 'user#create'
-  get '/login_form', to: 'user#login_form', as: 'login_form'
+  get '/dashboard', to: 'user#show', as: 'user'
   post '/login', to: 'user#login', as: 'login'
   get 'logout', to: 'user#logout', as: 'logout'
+  get '/login_form', to: 'user#login_form', as: 'login_form'
+
   get '/users/:user_id/discover', to: 'movie#index', as: 'movie_index'
   get '/users/:user_id/movies', to: 'movie#results', as: 'movie_results'
-  get '/users/:user_id/movies/:movie_id', to: 'movie#show', as: 'movie'
   get '/users/:user_id/movies/:movie_id/viewing_party/new', to: 'viewing_party#new', as: 'new_viewing_party'
-  get '/dashboard', to: 'user#show', as: 'user'
 end

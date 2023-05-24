@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Movie Results', :vcr do
   before :each do
     @user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
 
   describe "user can click on Top Rated or Search and be taken to movie results page" do
