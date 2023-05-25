@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user, only: [:show]
-  
+
   def new
     @user = User.new
   end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def require_user
-    if !session[:user_id]
+    if !current_user
       flash[:error] = 'You must be logged in or registered to view this page'
       redirect_to root_path
     end

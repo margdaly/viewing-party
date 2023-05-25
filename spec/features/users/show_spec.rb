@@ -8,7 +8,6 @@ RSpec.describe 'User Show Page' do
     fill_in :email, with: @user1.email
     fill_in :password, with: @user1.password
     click_on 'Log In'
-    # visit dashboard_path
   end
 
   it "displays the user's name" do
